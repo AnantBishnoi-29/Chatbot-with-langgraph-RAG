@@ -3,7 +3,7 @@ import uuid
 import streamlit as st
 from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
 
-from langraph_rag_backend import (
+from chatbot_backend import (
     chatbot,
     ingest_pdf,
     retrieve_all_threads,
@@ -28,7 +28,7 @@ def add_thread(thread_id):
         st.session_state["chat_threads"].append(thread_id)
 
 
-def load_conversation(thread_id):
+def load_conversation(thread_id):  
     state = chatbot.get_state(config={"configurable": {"thread_id": thread_id}})
     return state.values.get("messages", [])
 
